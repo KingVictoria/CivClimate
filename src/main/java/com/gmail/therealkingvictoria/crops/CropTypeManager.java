@@ -186,4 +186,20 @@ public class CropTypeManager {
 		return null;
 	} // getByID
 	
+	public static CropType getBySeedName(String seedName) {
+		for(CropType type: types) {
+			if(type.getSeedName().equals(seedName)) return type;
+		} // for
+		
+		return null;
+	} // getBySeedName
+	
+	public static CropType getByCropName(String cropName) {
+		for(CropType type: types) {
+			if(type.getCropName().equals(cropName)) return type;
+		} // for
+		
+		return null;
+	} // getByCropName
+	
 } // class

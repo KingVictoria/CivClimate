@@ -48,6 +48,8 @@ public class CropType {
 	public Material getSeedMaterial() 	{ return seedMaterial; }
 	public Material getCropMaterial()	{ return cropMaterial; }
 	public Material getBlockMaterial()	{ return blockMaterial; }
+	public CropState getGrowingState()  { return growingState; }
+	public CropState getGrownState()    { return grownState; }
 	
 	/**
 	 * Equals for determining whether a given material/state combo is this type of crop (useful for determining if a given crop block is this crop)
