@@ -50,7 +50,7 @@ public class CropManager {
 			config.set(path + ".y", crop.location.getBlockY());
 			config.set(path + ".z", crop.location.getBlockZ());
 			config.set(path + ".world", crop.location.getWorld().getName());
-			config.set(path + ".minutes", crops.get(crop.location).intValue());
+			config.set(path + ".minutes", crops.get(crop).intValue());
 			config.set(path + ".croptypeID", crop.cropType.getID());
 		} // for
 		

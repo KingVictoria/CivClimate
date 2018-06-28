@@ -20,6 +20,7 @@ public class SeedPlantListener implements Listener {
 		if(event.isCancelled()) return;
 		if(!event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) return;			// Ensures the action is a right click on a block
 		if(!event.getClickedBlock().getType().equals(Material.SOIL)) return;	// Ensures the block clicked is soil
+		if(event.getItem() == null) return;
 		
 		if(event.getItem().hasItemMeta()) {
 			CropType cropType = CropTypeManager.getBySeedName(event.getItem().getItemMeta().getDisplayName());

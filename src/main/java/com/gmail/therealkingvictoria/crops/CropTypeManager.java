@@ -104,7 +104,7 @@ public class CropTypeManager {
 			
 			Material seedMaterial = Material.valueOf(config.getString("wheat_"+i+".seedMaterial"));
 			Material cropMaterial = Material.valueOf(config.getString("wheat_"+i+".cropMaterial"));
-			Material blockMaterial = Material.WHEAT;
+			Material blockMaterial = Material.CROPS;
 			
 			CropState growingState = CropState.getByData((byte) (i*2));
 			CropState grownState = CropState.getByData((byte) (i*2 + 1));
