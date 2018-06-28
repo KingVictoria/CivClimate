@@ -5,7 +5,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockGrowEvent;
 
 /**
- * Handles crop growth
+ * Prevents crops from growing naturally (this plugin handles all crop growth internally)
  * @author KingVictoria
  */
 public class CropGrowthListener implements Listener {

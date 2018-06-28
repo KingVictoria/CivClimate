@@ -12,6 +12,10 @@ import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
+/**
+ * Manages the CropTypes and loads them from file
+ * @author KingVictoria
+ */
 public class CropTypeManager {
 	
 	private static List<CropType> types;		// Availible types of crops

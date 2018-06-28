@@ -11,6 +11,10 @@ import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
+/**
+ * Loads all locations and types from file and handles each individual crop
+ * @author KingVictoria
+ */
 public class CropManager {
 	
 	private static Map<Crop, Integer> crops;
@@ -18,6 +22,10 @@ public class CropManager {
 	private static File file;					// File of crop config
 	private static FileConfiguration config;	// Crop configuration data
 	
+	/**
+	 * Initializes the CropManager, loading crops from file
+	 * @param configFile the file of the crops config
+	 */
 	public static void initialize(File configFile) {
 		try {
 			file = configFile;
@@ -30,6 +38,9 @@ public class CropManager {
 		} // try/catch
 	} // initialize
 	
+	/**
+	 * Terminates the CropManager, saving growing crops to file
+	 */
 	public static void terminate() {
 		config = new YamlConfiguration();
 		
@@ -51,6 +62,10 @@ public class CropManager {
 		} // try/catch
 	} // terminate
 	
+	/**
+	 * Loads crops from FileConfiguration into memory
+	 * @return Map of Crop to Integer, where Crop is the crop data and Integer is the number of minutes since planted
+	 */
 	private static Map<Crop, Integer> loadCrops() {
 		Map<Crop, Integer> crops = new HashMap<>();
 		
@@ -68,10 +83,20 @@ public class CropManager {
 		return crops;
 	} // loadCrops
 	
+	/**
+	 * Adds a crop to the manager
+	 * @param loc Location of crop block
+	 * @param type CropType of the crop
+	 */
 	public static void add(Location loc, CropType type) {
 		crops.put(new Crop(loc, type), 0);
 	} // add
 	
+	/**
+	 * Removes a crop from the manager
+	 * @param loc Location of the crop block
+	 * @param type CropType of the crop
+	 */
 	public static void remove(Location loc, CropType type) {
 		Crop crop = new Crop(loc, type);
 		crops.remove(crop);

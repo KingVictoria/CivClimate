@@ -20,6 +20,17 @@ public class CropType {
 	private CropState growingState;
 	private CropState grownState;
 	
+	/**
+	 * Creates a CropType, used to store the types of crops into memory
+	 * @param id String id used to differentiate crops in the config (ex: wheat_0)
+	 * @param seedName String name of the seeds of this crop
+	 * @param cropName String name of the crops (the output item) of this crop
+	 * @param seedMaterial Material the material of the seeds of this crop
+	 * @param cropMaterial Material the material of the crops (output item) of this crop
+	 * @param blockMaterial Material the material of the crop block
+	 * @param growingState CropState growth state of the crop block when the crop should be still growing
+	 * @param grownState CropState growth state of the crop block when the crop should be fully grown
+	 */
 	public CropType(String id, String seedName, String cropName, Material seedMaterial, Material cropMaterial, Material blockMaterial, CropState growingState, CropState grownState) {
 		this.id 			= id;
 		this.seedName 		= seedName;
@@ -38,6 +49,12 @@ public class CropType {
 	public Material getCropMaterial()	{ return cropMaterial; }
 	public Material getBlockMaterial()	{ return blockMaterial; }
 	
+	/**
+	 * Equals for determining whether a given material/state combo is this type of crop (useful for determining if a given crop block is this crop)
+	 * @param material Material of the crop block
+	 * @param state CropState growth state of the crop block
+	 * @return true of the material is the same and the state is either the growing or grown state of this CropType
+	 */
 	public boolean equals(Material material, CropState state) {
 		if(material.equals(blockMaterial) && (state.equals(growingState) || state.equals(grownState))) return true;
 		return false;
