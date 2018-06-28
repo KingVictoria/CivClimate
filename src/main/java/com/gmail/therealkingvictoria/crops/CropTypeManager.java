@@ -14,7 +14,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 
 public class CropTypeManager {
 	
-	public static List<CropType> types;			// Availible types of crops
+	private static List<CropType> types;		// Availible types of crops
 	
 	private static File file;					// File of crop config
 	private static FileConfiguration config;	// Crop configuration data
@@ -31,13 +31,13 @@ public class CropTypeManager {
 			setDefaults();
 			types = loadCropTypes();
 		} catch (IllegalArgumentException e) {
-			Bukkit.getLogger().severe("Crops config not loaded");
+			Bukkit.getLogger().severe("Crop type config not loaded");
 			e.printStackTrace();
 		} catch (IOException e) {
-			Bukkit.getLogger().severe("Unable to create crops config");
+			Bukkit.getLogger().severe("Unable to create crop type config");
 			e.printStackTrace();
 		} catch (SecurityException e) {
-			Bukkit.getLogger().severe("Unable to create crops config due to security restrictions on this system");
+			Bukkit.getLogger().severe("Unable to create crop type config due to security restrictions on this system");
 			e.printStackTrace();
 		} // try/catch/catch/catch
 	} // initialize
@@ -105,7 +105,7 @@ public class CropTypeManager {
 			CropState growingState = CropState.getByData((byte) (i*2));
 			CropState grownState = CropState.getByData((byte) (i*2 + 1));
 			
-			types.add(new CropType(seedName, cropName, seedMaterial, cropMaterial, blockMaterial, growingState, grownState));
+			types.add(new CropType("wheat_"+i, seedName, cropName, seedMaterial, cropMaterial, blockMaterial, growingState, grownState));
 		} // for
 		
 		for(int i = 0; i < 2; i++) {
@@ -126,7 +126,7 @@ public class CropTypeManager {
 				grownState = CropState.getByData((byte) 7);
 			} // if/else
 			
-			types.add(new CropType(seedName, cropName, seedMaterial, cropMaterial, blockMaterial, growingState, grownState));
+			types.add(new CropType("carrot_"+i, seedName, cropName, seedMaterial, cropMaterial, blockMaterial, growingState, grownState));
 		} // for
 		
 		for(int i = 0; i < 2; i++) {
@@ -147,7 +147,7 @@ public class CropTypeManager {
 				grownState = CropState.getByData((byte) 7);
 			} // if/else
 			
-			types.add(new CropType(seedName, cropName, seedMaterial, cropMaterial, blockMaterial, growingState, grownState));
+			types.add(new CropType("potato_"+i, seedName, cropName, seedMaterial, cropMaterial, blockMaterial, growingState, grownState));
 		} // for
 		
 		for(int i = 0; i < 2; i++) {
@@ -168,10 +168,18 @@ public class CropTypeManager {
 				grownState = CropState.getByData((byte) 3);
 			} // if/else
 			
-			types.add(new CropType(seedName, cropName, seedMaterial, cropMaterial, blockMaterial, growingState, grownState));
+			types.add(new CropType("beetroot_"+i, seedName, cropName, seedMaterial, cropMaterial, blockMaterial, growingState, grownState));
 		} // for
 		
 		return types;
 	} // loadTypes
+	
+	public static CropType getByID(String id) {
+		for(CropType type: types) {
+			if(type.getID().equals(id)) return type;
+		} // for
+		
+		return null;
+	} // getByID
 	
 } // class

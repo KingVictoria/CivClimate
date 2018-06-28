@@ -9,6 +9,7 @@ import org.bukkit.Material;
  */
 public class CropType {
 	
+	private String id;
 	private String seedName;
 	private String cropName;
 	
@@ -19,7 +20,8 @@ public class CropType {
 	private CropState growingState;
 	private CropState grownState;
 	
-	public CropType(String seedName, String cropName, Material seedMaterial, Material cropMaterial, Material blockMaterial, CropState growingState, CropState grownState) {
+	public CropType(String id, String seedName, String cropName, Material seedMaterial, Material cropMaterial, Material blockMaterial, CropState growingState, CropState grownState) {
+		this.id 			= id;
 		this.seedName 		= seedName;
 		this.cropName 		= cropName;
 		this.seedMaterial 	= seedMaterial;
@@ -29,6 +31,7 @@ public class CropType {
 		this.grownState 	= grownState;
 	} // Crop
 	
+	public String getID()				{ return id; }
 	public String getSeedName() 		{ return seedName; }
 	public String getCropName() 		{ return cropName; }
 	public Material getSeedMaterial() 	{ return seedMaterial; }
@@ -38,6 +41,16 @@ public class CropType {
 	public boolean equals(Material material, CropState state) {
 		if(material.equals(blockMaterial) && (state.equals(growingState) || state.equals(grownState))) return true;
 		return false;
-	} // equals
+	} // equals(Material, CropState)
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(!(obj instanceof CropType)) return false;
+		
+		CropType type = (CropType) obj;
+		
+		if(id.equals(type.id)) return true;
+		return false;
+	} // equals(CropType)
 
 } // class
