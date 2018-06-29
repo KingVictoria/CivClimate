@@ -6,6 +6,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import com.gmail.therealkingvictoria.crops.CropManager;
 import com.gmail.therealkingvictoria.crops.CropTypeManager;
+import com.gmail.therealkingvictoria.listeners.CropBreakListener;
 import com.gmail.therealkingvictoria.listeners.CropGrowthListener;
 import com.gmail.therealkingvictoria.listeners.SeedPlantListener;
 
@@ -25,6 +26,7 @@ public class CivClimate extends JavaPlugin {
 		
 		getServer().getPluginManager().registerEvents(new CropGrowthListener(), this);	// Prevents normal growth
 		getServer().getPluginManager().registerEvents(new SeedPlantListener(), this);	// Handles planting custom crops
+		getServer().getPluginManager().registerEvents(new CropBreakListener(), this);	// Handles breaking custom crops
 	} // onEnable
 	
 	public void onDisable() {

@@ -160,7 +160,7 @@ public class CropTypeManager {
 			
 			Material seedMaterial = Material.valueOf(config.getString("beetroot_"+i+".seedMaterial"));
 			Material cropMaterial = Material.valueOf(config.getString("beetroot_"+i+".cropMaterial"));
-			Material blockMaterial = Material.BEETROOT;
+			Material blockMaterial = Material.BEETROOT_BLOCK;
 			
 			CropState growingState, grownState;
 			
@@ -201,5 +201,13 @@ public class CropTypeManager {
 		
 		return null;
 	} // getByCropName
+	
+	public static CropType getByCropState(Material material, CropState state) {
+		for(CropType type: types) {
+			if(type.equals(material, state)) return type;
+		} // for
+		
+		return null;
+	} // getByCropState
 	
 } // class

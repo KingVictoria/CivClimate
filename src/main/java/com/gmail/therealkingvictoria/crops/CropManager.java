@@ -97,9 +97,13 @@ public class CropManager {
 	 * @param loc Location of the crop block
 	 * @param type CropType of the crop
 	 */
-	public static void remove(Location loc, CropType type) {
-		Crop crop = new Crop(loc, type);
-		crops.remove(crop);
+	public static void remove(Location loc) {
+		for(Crop crop: crops.keySet()) {
+			if(crop.location.equals(loc)) {
+				crops.remove(crop);
+				return;
+			} // if
+		} // for
 	} // remove
 
 } // class
