@@ -26,7 +26,7 @@ public class CropTickTask extends BukkitRunnable {
 		
 		for(Crop crop: toFinish) {
 			crops.remove(crop);
-			crop.location.getBlock().setData((byte) (crop.location.getBlock().getData() + 1));
+			crop.location.getBlock().setData(crop.cropType.getGrownState().getData());
 		} // for
 	} // run
 	
