@@ -10,6 +10,7 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.plugin.Plugin;
 
 /**
  * Loads all locations and types from file and handles each individual crop
@@ -26,7 +27,7 @@ public class CropManager {
 	 * Initializes the CropManager, loading crops from file
 	 * @param configFile the file of the crops config
 	 */
-	public static void initialize(File configFile) {
+	public static void initialize(File configFile, Plugin plugin) {
 		try {
 			file = configFile;
 			file.createNewFile();
@@ -36,6 +37,9 @@ public class CropManager {
 			Bukkit.getLogger().severe("Crops config not loaded");
 			e.printStackTrace();
 		} // try/catch
+		
+		CropTickTask task = new CropTickTask(crops);
+		task.runTaskTimer(plugin, 1200, 1200);
 	} // initialize
 	
 	/**

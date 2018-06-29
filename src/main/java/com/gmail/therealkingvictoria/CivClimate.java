@@ -20,9 +20,9 @@ import com.gmail.therealkingvictoria.listeners.SeedPlantListener;
 public class CivClimate extends JavaPlugin {
     
 	public void onEnable() {
-		getDataFolder().mkdirs();													// Ensures the data folder exists
-		CropTypeManager.initialize(new File(getDataFolder(), "croptypes.yaml"));	// Loads CropTypes from file and manages them
-		CropManager.initialize(new File(getDataFolder(), "crops.yaml"));			// Loads Crops from file and manages them
+		getDataFolder().mkdirs();														// Ensures the data folder exists
+		CropTypeManager.initialize(new File(getDataFolder(), "croptypes.yaml"));		// Loads CropTypes from file and manages them
+		CropManager.initialize(new File(getDataFolder(), "crops.yaml"), this);			// Loads Crops from file and manages them
 		
 		getServer().getPluginManager().registerEvents(new CropGrowthListener(), this);	// Prevents normal growth
 		getServer().getPluginManager().registerEvents(new SeedPlantListener(), this);	// Handles planting custom crops
