@@ -178,6 +178,10 @@ public class CropTypeManager {
 		return types;
 	} // loadTypes
 	
+	public static List<CropType> getCropTypes() {
+		return types;
+	} // getCropTypes;
+	
 	public static CropType getByID(String id) {
 		for(CropType type: types) {
 			if(type.getID().equals(id)) return type;
