@@ -6,6 +6,8 @@ import java.util.Map;
 
 import org.bukkit.scheduler.BukkitRunnable;
 
+import com.gmail.therealkingvictoria.climates.ClimateManager;
+
 public class CropTickTask extends BukkitRunnable {
 	
 	Map<Crop, Integer> crops;
@@ -31,7 +33,7 @@ public class CropTickTask extends BukkitRunnable {
 	} // run
 	
 	private boolean isFinished(Crop crop, int minutes) {
-		// TODO: Implement finish check for a given CropType and minutes -- REQUIRES BIOMES/WORLDS CONFIG (ClimateManager)
+		if(ClimateManager.getData(crop.cropType, crop.location).timeToGrow <= minutes) return true;
 		return false;
 	} // isFinished
 

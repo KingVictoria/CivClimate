@@ -4,6 +4,7 @@ import java.io.File;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.gmail.therealkingvictoria.climates.ClimateManager;
 import com.gmail.therealkingvictoria.crops.CropManager;
 import com.gmail.therealkingvictoria.crops.CropTypeManager;
 import com.gmail.therealkingvictoria.listeners.CropBreakListener;
@@ -23,6 +24,7 @@ public class CivClimate extends JavaPlugin {
 		getDataFolder().mkdirs();														// Ensures the data folder exists
 		CropTypeManager.initialize(new File(getDataFolder(), "croptypes.yaml"));		// Loads CropTypes from file and manages them
 		CropManager.initialize(new File(getDataFolder(), "crops.yaml"), this);			// Loads Crops from file and manages them
+		ClimateManager.initialize(new File(getDataFolder(), "climates.yaml"));			// Loads Climates from file and handles climate data for custom crops
 		
 		getServer().getPluginManager().registerEvents(new CropGrowthListener(), this);	// Prevents normal growth
 		getServer().getPluginManager().registerEvents(new SeedPlantListener(), this);	// Handles planting custom crops
